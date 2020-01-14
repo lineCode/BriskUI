@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.16)
+project(BriskUI VERSION 0.1)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+set(SRC_LIST
+    "${PROJECT_SOURCE_DIR}/Source/CoreCpp/main.cpp"
+    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/NativeWindow.cpp"
+    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/Windows/WinNativeWindow.cpp"
+    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/Windows/Direct2D/WInD2DApplication.cpp"
+)
+
+configure_file(
+    "${PROJECT_BINARY_DIR}/CMakeConfig.h.in"
+    "${PROJECT_BINARY_DIR}/CMakeConfig.h"
+)
+
+target_include_directories(BriskUI PUBLIC
+    "${PROJECT_SOURCE_DIR}/Source"
+    "${PROJECT_BINARY_DIR}"
+    ${EXTRA_INCLUDES}
+)
+
+add_executable(BriskUI ${SRC_LIST})

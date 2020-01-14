@@ -30,6 +30,10 @@ The table below shows the details of the platform to which BriskUI applies:
 # Installation
 BriskUI is a header-only C++ library. Just copy the `Import` folder to system or project's include path to simply use it.
 
+BriskUI uses following software as its dependencies:
+- [CMake](https://cmake.org/) as a general build tool
+- (optional) [Googletest](https://github.com/google/googletest/) for unit and performance testing
+
 # Architecture
 ```
 .
