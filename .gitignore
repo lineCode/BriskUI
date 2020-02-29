@@ -1,41 +1,7 @@
-# C/C++ gitignore
-*.cmd
+# C++ gitignore
 *.d
-*.dSYM/
-*.slo
-*.lo
 *.o
-*.ko
 *.obj
-*.exp
-*.elf
-dkms.conf
-*.gch
-*.pch
-*.so
-*.so.*
-*.dylib
-*.dll
-*.map
-modules.order
-Module.symvers
-Mkfile.old
-*.hex
-*.mod
-*.mod*
-*.smod
-*.su
-.tmp_versions/
-*.lai
-*.la
-*.a
-*.lib
-*.exe
-*.out
-*.app
-*.i*86
-*.idb
-*.x86_64
 # Visual Studio gitignore
 *.rsuser
 *.suo
@@ -228,3 +194,4 @@ MigrationBackup/
 .ionide/
 #Others gitignore
 *.code-workspace
+/.vscode/

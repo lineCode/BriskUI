@@ -3,22 +3,31 @@ project(BriskUI VERSION 0.1)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
-set(SRC_LIST
-    "${PROJECT_SOURCE_DIR}/Source/CoreCpp/main.cpp"
-    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/NativeWindow.cpp"
-    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/Windows/WinNativeWindow.cpp"
-    "${PROJECT_SOURCE_DIR}/Source/CoreGraphic/NativeWindow/Windows/Direct2D/WInD2DApplication.cpp"
-)
+ 
+option(HOST_SYSTEM_NAME_STR_ENABLE "Enable Host System Name" ON)
+if(HOST_SYSTEM_NAME_STR_ENABLE)
+    set(HOST_SYSTEM_NAME_STR "${CMAKE_HOST_SYSTEM_NAME}")
+endif()
 
 configure_file(
-    "${PROJECT_BINARY_DIR}/CMakeConfig.h.in"
-    "${PROJECT_BINARY_DIR}/CMakeConfig.h"
+    "${PROJECT_SOURCE_DIR}/CMConfig.fuckcmake"
+    "${PROJECT_BINARY_DIR}/CMakeConfigHeader/CMConfig.h"
 )
 
-target_include_directories(BriskUI PUBLIC
+FILE(GLOB_RECURSE DIR_SRCS
+    CONFIGURE_DEPENDS
+    "${PROJECT_SOURCE_DIR}/Source/*.c"
+    "${PROJECT_SOURCE_DIR}/Source/*.cc"
+    "${PROJECT_SOURCE_DIR}/Source/*.cp"
+    "${PROJECT_SOURCE_DIR}/Source/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Source/*.cx"
+    "${PROJECT_SOURCE_DIR}/Source/*.cxx"
+)
+
+add_executable(${PROJECT_NAME} ${DIR_SRCS})
+
+target_include_directories(${PROJECT_NAME} PUBLIC
     "${PROJECT_SOURCE_DIR}/Source"
-    "${PROJECT_BINARY_DIR}"
+    "${PROJECT_BINARY_DIR}/CMakeConfigHeader"
     ${EXTRA_INCLUDES}
 )
-
-add_executable(BriskUI ${SRC_LIST})
